@@ -1,0 +1,496 @@
+@font-style: Arial, Helvetica, sans-serif;
+@color-green: #4eae4e;
+@color-green-light: #76b476;
+@color-grey: #404040;
+@color-light: #eeeeee;
+@color-white: #f8f8f8;
+@color-dark: #222222;
+@anim-time: .4s;
+@border-radius: 3px;
+@link-height: 2em;
+@table-boder-line: 2px;
+@table-padding: 0.5em;
+@form-input-height: 2em;
+@form-textarea-height: 25em;
+
+@topnav-margin: 0.5em;
+@topnav-height: 3em;
+@topnav-font-size: 1em;
+@topnav-search-height: 2em;
+@topnav-search-width: 12em;
+@topnav-divider-height: 2px;
+
+@content-code-padding-side: @topnav-margin;
+@content-code-padding-top: @topnav-margin;
+@content-code-padding-bottom: @topnav-margin;
+@content-code-margin-side: @topnav-margin;
+@content-code-margin-top: 0em;
+@content-code-margin-bottom: 1em;
+
+@mainpage-content-width: 100%;
+@mainpage-video-padding: 1em;
+@mainpage-video-fontsize: 2.5em;
+@mainpage-video-fontsize-mobile: 1.5em;
+@mainpage-video-fontcolor: @color-light;
+@mainpage-section-padding: 1em;
+@mainpage-section-max-height: 25em;
+@mainpage-section-min-height: 25em;
+
+@content-padding-side: 8em;
+@content-padding-top: 1em;
+@content-padding-bottom: 1em;
+
+@footer-padding: 1em;
+
+@mobile-max-width: 750px;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: @font-style;
+  background-color: @color-grey;
+}
+
+.topnav {
+  margin: @topnav-margin;
+  overflow: hidden;
+  background-color: @color-dark;
+
+  a {
+    text-transform: uppercase;
+    font-weight: bold;
+    float: left;
+    display: block;
+    color: @color-light;
+    text-align: center;
+    padding: (@topnav-height - @topnav-font-size) / 2;
+    text-decoration: none;
+    font-size: @topnav-font-size;
+    transition: @anim-time;
+
+    &:hover {
+      background-color: @color-green;
+      color: @color-dark;
+    }
+  }
+  
+  .search-container {
+    margin-right: @topnav-margin;
+    margin-left: @topnav-margin;
+    float: right;
+    z-index: 100;
+  
+    #search_messages {
+      visibility: hidden;
+      padding: 0;
+      text-align: left;
+      width: @topnav-search-width;
+      padding-top: @topnav-search-height / 2;
+      border-radius: (@topnav-search-height / 8) (@topnav-search-height / 8) (@topnav-search-height / 2) (@topnav-search-height / 2);    
+      z-index: 101;
+      white-space:pre; 
+      background-color: @color-light;
+      position: absolute;
+      text-transform: none;
+      margin-top: -@topnav-search-height / 2;
+
+      a {
+        width: @topnav-search-width;
+        text-align: left;
+        font-family: @font-style;
+        font-size: @topnav-font-size;
+        text-transform: none;
+        color: @color-dark;
+        transition: auto;
+
+        &:hover {
+          border-radius: @topnav-search-height / 2;
+          background-color: @color-green;
+          color: @color-light;
+          transition: auto;
+        }
+      }
+    }
+  }
+
+  #search_input {
+    position: relative;
+    width: @topnav-search-width;
+    padding-left: @topnav-search-height / 2;
+    padding-right: @topnav-search-height / 2;
+    margin-top: (@topnav-height - @topnav-search-height) / 2;
+    height: @topnav-search-height;
+    border-radius: @topnav-search-height / 2;
+    font-size: @topnav-font-size;
+    outline: none;
+    border: none;
+    z-index: 102;
+    background-color: @color-light;
+  }
+}
+
+.topnav-divider
+{
+  visibility: hidden;
+}
+
+.content-code {
+  padding-top: @content-code-padding-top;
+  padding-bottom: @content-code-padding-bottom;
+  padding-left: @content-code-padding-side;
+  padding-right: @content-code-padding-side;
+  background-color: @color-white;
+  color: @color-dark;
+  font-family: @font-style;
+  margin-left: @content-code-margin-side;
+  margin-right: @content-code-margin-side;
+  margin-top: @content-code-margin-top;
+  margin-bottom: @content-code-margin-bottom;
+  border-radius: @border-radius;
+
+  a {
+    text-align: center;
+    display: block;
+    background-color: @color-dark;
+    text-decoration: none;
+    color: @color-light;
+    transition: @anim-time;
+    font-weight: bold;
+    height: @link-height;
+    border-radius: @border-radius;
+    margin: auto;
+    padding: (@link-height - @topnav-font-size) / 2;
+    
+    &:hover, &:visited {
+      background-color: @color-grey;
+    }
+  }
+}
+
+.mainpage-content {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  z-index: 0;
+
+  .mainpage-video {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0; 
+    width: 100%;
+
+    p {
+      position: absolute;
+      font-size: @mainpage-video-fontsize;
+      color: @mainpage-video-fontcolor;
+      padding: @mainpage-video-padding;
+      padding-top: 0;
+      height: @mainpage-video-fontsize;
+      z-index: 1;
+    }
+
+    video {
+      position: relative;
+      width: 100%;
+      z-index: 0;      
+    }
+
+    img {      
+      position: relative;
+      width: 100vw;
+      z-index: 0; 
+    }
+  }
+
+  .section-light {
+    background-color: @color-light;
+    color: @color-dark;
+  }
+
+  .section-dark {
+    background-color: @color-grey;
+    color: @color-light;
+  }
+
+  .section-light, .section-dark
+  {
+    width: 100%;
+    display: flex;
+    
+    .column {
+      flex: 50%;
+      padding: @mainpage-section-padding;
+      max-height: @mainpage-section-max-height;
+      min-height: @mainpage-section-min-height;
+      position: relative;
+
+      img {
+        position: relative;
+        align-self: center;
+        width:100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+  
+.content
+{
+  padding-left: @content-padding-side;
+  padding-right: @content-padding-side;
+  padding-top: @content-padding-top;
+  padding-bottom: @content-padding-bottom;
+  background-color: @color-light;
+  color: @color-dark;
+  width: 100%;
+  
+  h1 {      
+    margin-top: 0;
+    text-align: justify;
+    text-transform: uppercase;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+
+    td, th {
+      border: @table-boder-line solid @color-dark;
+      width: 50%;
+      padding: @table-padding;
+    }
+
+    th {
+      background-color: @color-dark;
+      color: @color-light;
+      text-transform: uppercase;
+    }
+
+    td {
+      a {
+        line-height: 2em;
+        padding: @table-padding;
+        border-radius: @border-radius;
+        color: @color-light;
+        text-decoration: none;          
+        transition: @anim-time;
+        width: 12em;
+        margin: auto;
+      }
+
+      .link-noactive {
+        background-color: @color-grey;
+
+        &:hover {
+          background-color: @color-dark;
+        }
+      }
+    
+      .link-active {
+        background-color: @color-green;  
+
+        &:hover {
+          background-color: @color-green-light;
+        }  
+      }      
+    }
+  }
+
+  .resourse-noactive {
+    background-color: @color-grey;
+
+    &:hover {
+      background-color: @color-dark;
+    }
+  }
+
+  .resourse-active {
+    background-color: @color-green;
+
+    &:hover {
+      background-color: @color-green-light;
+    }
+  } 
+
+  a {
+    display: block;
+    margin: 0.25em;
+    width: 100%;
+    line-height: @link-height;
+    padding: 0.5em;
+    border-radius: @border-radius;
+    color: @color-light;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;      
+    transition: @anim-time;
+  }
+
+  .form {
+    margin: auto;
+    width: 50%;
+    min-width: 500px;
+    background-color: @color-grey;
+    padding: 1em;
+    color: @color-light;
+    border-radius: @border-radius;
+
+    input[type=text], textarea {
+      display: block;
+      width: 100%;
+      height: @form-input-height;
+      border: none;
+      border-radius:  @form-input-height / 2;
+      padding: 1em;      
+      margin-bottom: 2em;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+      outline: none;
+      height: @form-textarea-height;
+    }
+
+    p {
+      margin: 0;
+      margin-bottom: 0.5em;
+    }
+
+    input[type=submit] {
+      border: none;
+      border-radius:  @form-input-height / 2;
+      background-color: @color-dark;
+      color: @color-light;
+      width: 100%;
+      height: @form-input-height;
+      transition: @anim-time;
+      text-transform: uppercase;  
+      outline: none;    
+
+      &:hover {        
+        background-color: @color-green;
+        color: @color-dark;
+      }
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: @color-dark;
+  color: @color-light;
+  margin: 0;
+  padding: @footer-padding;
+  flex: 0 0 auto;
+  bottom:0; 
+
+  p {
+    text-align: center;
+    
+  }
+}
+
+@media screen and (max-width: @mobile-max-width) {
+  .topnav {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+
+    .search-container {
+      float: none;
+    }
+
+    a, input {
+      float: none;
+      display: block;
+      text-align: left;
+      width: 100%;
+      margin: 0;
+      padding: (@topnav-height - @topnav-font-size) / 2;
+    }
+
+    #search_input {
+      border: none;  
+      width: @topnav-search-width;
+      margin-top: (@topnav-height - @topnav-search-height) / 2; 
+      margin-bottom: (@topnav-height - @topnav-search-height) / 2; 
+    }
+
+    .search-container {
+      #search_messages {
+        border: none;   
+        margin-top: -@topnav-search-height;
+        padding-top: @topnav-search-height;
+        border-radius: (@topnav-search-height / 4) (@topnav-search-height / 4) (@topnav-search-height / 2) (@topnav-search-height / 2); 
+        align-content: center;
+        width: @topnav-search-width;
+      }
+    }
+
+    a {
+      transition: auto;
+
+      &:hover {
+        border-radius: 0;
+        background-color: @color-green;
+        color: @color-light;
+        transition: auto;
+      }
+    }
+  }
+  .mainpage-content {
+    .mainpage-video {
+      p {
+        font-size: @mainpage-video-fontsize-mobile;
+      }
+    } 
+  }
+
+  .topnav-divider
+  {
+    background-color: @color-green;
+    padding: @topnav-divider-height;
+    visibility: visible;
+  }
+
+  .content-code {
+    margin: 0;
+  }
+
+  .section-light, .section-dark
+  {
+    flex-direction: column;
+  }
+
+  .content {
+    padding-left: @content-padding-top;
+    padding-right: @content-padding-top;
+    
+    .form {
+      width: 100%;
+    }
+  }  
+}

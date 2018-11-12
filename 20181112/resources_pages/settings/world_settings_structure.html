@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../../js/jquery.min.js">\x3C/script>')</script>
+  <title>World settings. PWG SDK.</title>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="../../index.html">About</a>
+  <a href="../../downloads.html">Downloads</a> 
+  <a href="../../resources.html">Resourses</a>
+  <a href="../../contacts.html">Contacts</a>
+</div>
+
+<div class="topnav-divider"></div>
+
+<div class="topnav">
+  <a href="../api/api.html">API</a>
+  <a href="world_settings_structure.html">Settings</a>
+  <a href="../tutorials/tutorials.html">Tutorials</a>
+  <a href="../faq/faq.html">FAQ</a> 
+  <div class="search-container">
+    <input id="search_input" type="text" placeholder="Search..." name="search" autocomplete="off">
+    <div id="search_messages" ></div>
+    <script type="text/javascript" src="../../js/search.js"></script>
+  </div>
+</div>
+
+<div class="content-code">  <table>
+  <tr><th>Name</th><th>Declarations</th><th>Info</th></tr>
+    <tr> 
+       <td><a href="is_logging_file.html">is_logging_file</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [System] <br>
+         <b>Parameter in INI file:</b> log_to_file <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Log generation process to file.</td> 
+     </tr>
+    <tr> 
+       <td><a href="is_logging_console.html">is_logging_console</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [System] <br>
+         <b>Parameter in INI file:</b> log_to_console <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Log generation process to stdout.</td> 
+     </tr>
+    <tr> 
+       <td><a href="log_file.html">log_file</a></td> 
+       <td><p>         <b>Type:</b> <code>std::string</code> <br>
+         <b>Section in INI file:</b> [System] <br>
+         <b>Parameter in INI file:</b> log_file <br>
+         <b>Default value:</b> <code>std::string("")</code> 
+       </p></td> 
+       <td>Path for log file.</td> 
+     </tr>
+    <tr> 
+       <td><a href="binary_search_iterations.html">binary_search_iterations</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [System] <br>
+         <b>Parameter in INI file:</b> binary_search_iterations <br>
+         <b>Default value:</b> <code>10</code> 
+       </p></td> 
+       <td>Count of binary search iterations. Higher values means more accuracy, but less performance.</td> 
+     </tr>
+    <tr> 
+       <td><a href="seed.html">seed</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [General] <br>
+         <b>Parameter in INI file:</b> seed <br>
+         <b>Default value:</b> <code>1</code> 
+       </p></td> 
+       <td>Seed of random number generator. Worlds with the same settings but with different seeds will be different.</td> 
+     </tr>
+    <tr> 
+       <td><a href="size.html">size</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [General] <br>
+         <b>Parameter in INI file:</b> size <br>
+         <b>Default value:</b> <code>1024</code> 
+       </p></td> 
+       <td>World sampling frequency [in points]. World map will be square and contain size*size points. Must be power of 2.</td> 
+     </tr>
+    <tr> 
+       <td><a href="macro_chunck_size.html">macro_chunck_size</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [General] <br>
+         <b>Parameter in INI file:</b> macro_chunck_size <br>
+         <b>Default value:</b> <code>128</code> 
+       </p></td> 
+       <td>Length of macro chunk [in points]. Used in river generation. Less values means more detail, but less performance. Must be power of 2 and more than length of micro chunk.</td> 
+     </tr>
+    <tr> 
+       <td><a href="micro_chunck_size.html">micro_chunck_size</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [General] <br>
+         <b>Parameter in INI file:</b> micro_chunck_size <br>
+         <b>Default value:</b> <code>32</code> 
+       </p></td> 
+       <td>Length of micro chunk [in points]. Defines smaller size of one biome place. Less values means more detail, but less performance. Must be power of 2 and less than length of macro chunk.</td> 
+     </tr>
+    <tr> 
+       <td><a href="water_ratio.html">water_ratio</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [General] <br>
+         <b>Parameter in INI file:</b> water_ratio <br>
+         <b>Default value:</b> <code>0.2f</code> 
+       </p></td> 
+       <td>Part of map that will be under water.</td> 
+     </tr>
+    <tr> 
+       <td><a href="basis_surface.html">basis_surface</a></td> 
+       <td><p>         <b>Type:</b> <code>Surface</code> <br>
+         <b>Section in INI file:</b> [Basis] <br>
+         <b>Parameter in INI file:</b> surface <br>
+         <b>Default value:</b> <code>DiamondSquare</code> 
+       </p></td> 
+       <td>Type of basis surface.</td> 
+     </tr>
+    <tr> 
+       <td><a href="basis_distortion.html">basis_distortion</a></td> 
+       <td><p>         <b>Type:</b> <code>Distortion</code> <br>
+         <b>Section in INI file:</b> [Basis] <br>
+         <b>Parameter in INI file:</b> distortion <br>
+         <b>Default value:</b> <code>DistortionQuadric</code> 
+       </p></td> 
+       <td>Type of post-processing of basis surface.5</td> 
+     </tr>
+    <tr> 
+       <td><a href="basis_align.html">basis_align</a></td> 
+       <td><p>         <b>Type:</b> <code>Align</code> <br>
+         <b>Section in INI file:</b> [Basis] <br>
+         <b>Parameter in INI file:</b> align <br>
+         <b>Default value:</b> <code>AlignMiddle</code> 
+       </p></td> 
+       <td>Align of basis key point in the map.</td> 
+     </tr>
+    <tr> 
+       <td><a href="basis_key_point.html">basis_key_point</a></td> 
+       <td><p>         <b>Type:</b> <code>KeyPoint</code> <br>
+         <b>Section in INI file:</b> [Basis] <br>
+         <b>Parameter in INI file:</b> key_point <br>
+         <b>Default value:</b> <code>KeyPointDefault</code> 
+       </p></td> 
+       <td>Type of basis key point.</td> 
+     </tr>
+    <tr> 
+       <td><a href="basis_height.html">basis_height</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [Basis] <br>
+         <b>Parameter in INI file:</b> height <br>
+         <b>Default value:</b> <code>1.0f</code> 
+       </p></td> 
+       <td>Height of basis. That value will be correlated with mountains height, rivers deep, etc.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_count.html">mountains_count</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> count <br>
+         <b>Default value:</b> <code>0</code> 
+       </p></td> 
+       <td>Count of mountains.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_noises_count.html">mountains_noises_count</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;uint32_t&gt;</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> noises <br>
+         <b>Default value:</b> <code>std::vector&lt;uint32_t&gt;</code>(mountains_count) 
+       </p></td> 
+       <td>Count of noises to create a mountain.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_gradient_type.html">mountains_gradient_type</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;Gradient&gt;</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> gradient <br>
+         <b>Default value:</b> <code>std::vector&lt;Gradient&gt;</code>(mountains_count) 
+       </p></td> 
+       <td>Type of noise post process.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_hillside_type.html">mountains_hillside_type</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;Gradient&gt;</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> hillside <br>
+         <b>Default value:</b> <code>std::vector&lt;Gradient&gt;</code>(mountains_count) 
+       </p></td> 
+       <td>Type of post-process mountain conus.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_align.html">mountains_align</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;Align&gt;</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> align <br>
+         <b>Default value:</b> <code>std::vector&lt;Align&gt;</code>(mountains_count) 
+       </p></td> 
+       <td>Align of mountain's top point in the map.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_height.html">mountains_height</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;float&gt;</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> height <br>
+         <b>Default value:</b> <code>std::vector&lt;float&gt;</code>(mountains_count) 
+       </p></td> 
+       <td>Height of mountain. That value will be correlated with basis height, rivers deep, etc.</td> 
+     </tr>
+    <tr> 
+       <td><a href="mountains_size.html">mountains_size</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;uint32_t&gt;</code> <br>
+         <b>Section in INI file:</b> [Mountains] <br>
+         <b>Parameter in INI file:</b> size <br>
+         <b>Default value:</b> <code>std::vector&lt;uint32_t&gt;</code>(mountains_count) 
+       </p></td> 
+       <td>Mountain sampling frequency [in points]. Mountain map will be square and contain size*size points. Must be power of 2.</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_count.html">rivers_count</a></td> 
+       <td><p>         <b>Type:</b> <code>uint8_t</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> count <br>
+         <b>Default value:</b> <code>0</code> 
+       </p></td> 
+       <td>Count of rivers.</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_smooth_radius.html">rivers_smooth_radius</a></td> 
+       <td><p>         <b>Type:</b> <code>uint8_t</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> smooth_radius <br>
+         <b>Default value:</b> <code>3</code> 
+       </p></td> 
+       <td>Radius of smooth after rivers building [in points]. Better to use values less than 1/2 of rivers width.</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_max_length.html">rivers_max_length</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;uint32_t&gt;</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> max_macro_length <br>
+         <b>Default value:</b> <code>std::vector&lt;uint32_t&gt;</code>(rivers_count) 
+       </p></td> 
+       <td>River maximal length [in macro chunks].</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_distortion.html">rivers_distortion</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;float&gt;</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> distortion <br>
+         <b>Default value:</b> <code>std::vector&lt;float&gt;</code>(rivers_count) 
+       </p></td> 
+       <td>Rivers maximal distortion. Must be in [0.0f, sqrtf(2.0f)).</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_channel_width.html">rivers_channel_width</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;uint8_t&gt;</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> channel_width <br>
+         <b>Default value:</b> <code>std::vector&lt;uint8_t&gt;</code>(rivers_count) 
+       </p></td> 
+       <td>River's channel width [in points].</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_channel_depth.html">rivers_channel_depth</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;float&gt;</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> channel_depth <br>
+         <b>Default value:</b> <code>std::vector&lt;float&gt;</code>(rivers_count) 
+       </p></td> 
+       <td>Depth of river's channel. That value will be correlated with basis height, mountains height, etc.</td> 
+     </tr>
+    <tr> 
+       <td><a href="rivers_bump_add_coef.html">rivers_bump_add_coef</a></td> 
+       <td><p>         <b>Type:</b> <code>std::vector&lt;float&gt;</code> <br>
+         <b>Section in INI file:</b> [Rivers] <br>
+         <b>Parameter in INI file:</b> bump_add_coef <br>
+         <b>Default value:</b> <code>std::vector&lt;float&gt;</code>(rivers_count) 
+       </p></td> 
+       <td>Coefficient for bump high points of river with different strength than low points. 1.0f means the same strenght for low and high types of points.</td> 
+     </tr>
+    <tr> 
+       <td><a href="textures_enable.html">textures_enable</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> enable_textures <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Enable any textures.</td> 
+     </tr>
+    <tr> 
+       <td><a href="macro_texture_enable.html">macro_texture_enable</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> enable_macro_texture <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Add creation of big map for all world. That image can be used as minimap.</td> 
+     </tr>
+    <tr> 
+       <td><a href="normal_map_enable.html">normal_map_enable</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> enable_normals <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Create normal maps for all types of textures/</td> 
+     </tr>
+    <tr> 
+       <td><a href="normal_map_coef.html">normal_map_coef</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> normal_strength <br>
+         <b>Default value:</b> <code>1.0f</code> 
+       </p></td> 
+       <td>Strength of normal map bump. Must be in [0.0f, 1.0f].</td> 
+     </tr>
+    <tr> 
+       <td><a href="texture_splatting_deep.html">texture_splatting_deep</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> splatting_deep <br>
+         <b>Default value:</b> <code>0.2f</code> 
+       </p></td> 
+       <td>Depth of mixing colors if they are too close to each other. 0.0f can create artifacts, 1.0 will mix colors always. </td> 
+     </tr>
+    <tr> 
+       <td><a href="texture_splatting_bandwidth.html">texture_splatting_bandwidth</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> splatting_bandwidth <br>
+         <b>Default value:</b> <code>0.5f</code> 
+       </p></td> 
+       <td>Part of texture that will be splatted with neighbour. 0.0f means no splatting, 0.5f means that 0.5 texture will be splatted for any neighbour micro chunk. Must be in [0.0f, 0.5f]???</td> 
+     </tr>
+    <tr> 
+       <td><a href="macro_texture_tile_size.html">macro_texture_tile_size</a></td> 
+       <td><p>         <b>Type:</b> <code>uint32_t</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> macro_texture_tile_size <br>
+         <b>Default value:</b> <code>1</code> 
+       </p></td> 
+       <td>Then big map creating, that shows size of each micro chunk [in pixels]. Must be power of 2???</td> 
+     </tr>
+    <tr> 
+       <td><a href="texture_mountain.html">texture_mountain</a></td> 
+       <td><p>         <b>Type:</b> <code>std::string</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> img_mountain <br>
+         <b>Default value:</b> <code>std::string("")</code> 
+       </p></td> 
+       <td>Path to texture file for mountain biome. Texture's height and width must be the same nuber and power of 2.</td> 
+     </tr>
+    <tr> 
+       <td><a href="texture_basis.html">texture_basis</a></td> 
+       <td><p>         <b>Type:</b> <code>std::string</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> img_basis <br>
+         <b>Default value:</b> <code>std::string("")</code> 
+       </p></td> 
+       <td>Path to texture file for basis biome. Texture's height and width must be the same nuber and power of 2.</td> 
+     </tr>
+    <tr> 
+       <td><a href="texture_channel.html">texture_channel</a></td> 
+       <td><p>         <b>Type:</b> <code>std::string</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> img_channel <br>
+         <b>Default value:</b> <code>std::string("")</code> 
+       </p></td> 
+       <td>Path to texture file for river's channel biome. Texture's height and width must be the same nuber and power of 2.</td> 
+     </tr>
+    <tr> 
+       <td><a href="texture_sea.html">texture_sea</a></td> 
+       <td><p>         <b>Type:</b> <code>std::string</code> <br>
+         <b>Section in INI file:</b> [Textures] <br>
+         <b>Parameter in INI file:</b> img_sea <br>
+         <b>Default value:</b> <code>std::string("")</code> 
+       </p></td> 
+       <td>Path to texture file for sea biome. Texture's height and width must be the same nuber and power of 2.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_enable.html">models_enable</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> enable_models <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Export 3d models.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_create_chunks.html">models_create_chunks</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> create_chunks <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Export world as microchunks.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_create_complex.html">models_create_complex</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> create_complex <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Export world as one large object.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_add_texture_coords.html">models_add_texture_coords</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> add_texture_coords <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Add info about texture map coordinates.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_add_normals.html">models_add_normals</a></td> 
+       <td><p>         <b>Type:</b> <code>bool</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> add_normals <br>
+         <b>Default value:</b> <code>false</code> 
+       </p></td> 
+       <td>Add info about normals.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_edge_size.html">models_edge_size</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> edge_size <br>
+         <b>Default value:</b> <code>1.0f</code> 
+       </p></td> 
+       <td>Each polygon will have sides edge_size, edge_size, sqrt(2)*edge_size.</td> 
+     </tr>
+    <tr> 
+       <td><a href="models_map_height.html">models_map_height</a></td> 
+       <td><p>         <b>Type:</b> <code>float</code> <br>
+         <b>Section in INI file:</b> [Models] <br>
+         <b>Parameter in INI file:</b> map_height <br>
+         <b>Default value:</b> <code>50.0f</code> 
+       </p></td> 
+       <td>Distance between top and bottom points.</td> 
+     </tr>
+  </table>
+</div>
+
+<div class="footer">
+  <p>
+    All information presented "as-is" and can be modified by author at any period of time.
+  </p>
+  <p>
+    ©2018, Konstantin Fedorov. All rights reserved.
+  </p>
+</div>
+
+</body>
+</html>
